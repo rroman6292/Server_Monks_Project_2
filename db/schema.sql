@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS onboard_db;
+CREATE DATABASE onboard_db;

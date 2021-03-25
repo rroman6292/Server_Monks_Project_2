@@ -3,7 +3,7 @@ const { User, Onboarding } = require('../../models');
 
 
 
-//View all employees
+//View all staff - Admin Role
 router.get('/', async (req,res) => {
     try{
         const employeeData = await User.findAll({
@@ -14,6 +14,21 @@ router.get('/', async (req,res) => {
       res.status(400).json(err);
     }
   });
+
+
+//View all employees - Manager Role
+
+router.get('/', async (req,res) => {
+try{
+    const employeeData = await User.findAll({
+        where: {role: 'employee'},
+        include: {[model: Onboarding]},
+    });
+    res.status(200).json(employeeData);
+} catch (err) {
+    res.status(400).json(err);
+}
+});
 
 
 //Create User

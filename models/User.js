@@ -24,6 +24,14 @@ User.init(
         type: DataTypes.STRING,
         allowNull: false,
     },
+    role_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'role',
+        key: 'id',
+      }
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

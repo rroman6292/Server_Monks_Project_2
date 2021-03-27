@@ -14,7 +14,15 @@ Roles.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    onboarding_id:  {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'onboarding',
+        key: 'id',
+      }
+    },
   },
   {
     sequelize,

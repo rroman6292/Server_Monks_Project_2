@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 //show all onboarding plans
 router.get('/', async (req, res) => {
   try {
-    const onboardingtData = await Onboarding.findAll({
+    const onboardingData = await Onboarding.findAll({
       // include: [
       //   {
       //     model: User,

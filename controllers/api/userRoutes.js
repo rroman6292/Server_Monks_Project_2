@@ -7,7 +7,7 @@ const { User, Onboarding } = require('../../models');
 router.get('/', async (req,res) => {
     try{
         const employeeData = await User.findAll({
-            include: {[model: Onboarding]},
+            include: [{model: Onboarding}],
         });
         res.status(200).json(employeeData);
     } catch (err) {
@@ -22,7 +22,7 @@ router.get('/', async (req,res) => {
 try{
     const employeeData = await User.findAll({
         where: {role: 'employee'},
-        include: {[model: Onboarding]},
+        include: [{model: Onboarding}],
     });
     res.status(200).json(employeeData);
 } catch (err) {

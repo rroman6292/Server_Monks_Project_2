@@ -17,13 +17,13 @@
     </tr>
   </thead>
   <tbody>
-    {{#each employees as |employee| }}
+    {{#each allStaff as |staff| }}
     <tr>
-      <th scope="row">{{employee.id}}</th>
-      <td>{{employee.first_name}}</td>
-      <td>{{employee.last_name}}</td>
-      <td>{{employee.email}}</td>
-      <td>{{employee.plan}}</td>
+      <th scope="row">{{staff.id}}</th>
+      <td>{{staff.first_name}}</td>
+      <td>{{staff.last_name}}</td>
+      <td>{{staff.email}}</td>
+      <td>{{staff.plan}}</td>
       <td>
           <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i> Edit</a>
           <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>

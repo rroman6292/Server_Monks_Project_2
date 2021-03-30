@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Roles, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -25,18 +25,48 @@ router.get('/profile', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] }
     });
 
+    
+
     const user = userData.get({ plain: true });
+
+    // Get all staff members (employees, managers, and admins)
+
+    const staffData = await User.findAll({
+      include:  [
+        {
+          model: Roles,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const allStaff = staffData.map((staff) => staff.get({ plain: true }));
+
+    // Get all employees (no managers and no admins)
+    const employeeData = await User.findAll({
+      include:  [
+        {
+          model: Roles,
+          attributes: ['name'],
+          where: role_id = 3,
+        },
+      ],
+    });
+
+    const employees = employeeData.map((employee) => employee.get({ plain: true }));
 
     switch (userData.role_id)   {
         case 1:
             res.render('admin', {
                 ...user,
+                allStaff,
                 logged_in: true
             })
             break;
         case 2:
             res.render('manager', {
                 ...user,
+                employees,
                 logged_in: true
             })
             break;

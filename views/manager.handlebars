@@ -1,19 +1,34 @@
-<div class="row blue-grey darken-3">
-  <div class="col-md-6">
-    <h2>Manager Login</h2>
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
-      </div>
-    </form>
+<div class="row">
+  <div class="col-6"><h1>Employees</h1></div>
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/add" type="button" class="btn btn-primary align-self-center">+ADD</a> 
   </div>
 </div>
-<script src="./js/login.js"></script>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each employees as |employee| }}
+    <tr>
+      <th scope="row">{{employee.id}}</th>
+      <td>{{employee.first_name}}</td>
+      <td>{{employee.last_name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.plan}}</td>
+      <td>
+          <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i> Edit</a>
+          <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

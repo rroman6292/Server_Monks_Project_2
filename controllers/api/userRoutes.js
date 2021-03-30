@@ -18,11 +18,11 @@ router.get('/', async (req,res) => {
 
 //View all employees - Manager Role
 
-router.get('/', async (req,res) => {
+router.get('/employee', async (req,res) => {
 try{
     const employeeData = await User.findAll({
-        where: {role: 'employee'},
-        include: [{model: Onboarding}],
+        where: {role_id: 3}
+
     });
     res.status(200).json(employeeData);
 } catch (err) {

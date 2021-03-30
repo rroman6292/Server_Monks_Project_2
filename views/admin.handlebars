@@ -1,3 +1,10 @@
+<div class="row">
+  <div class="col-6"><h1>Employees</h1></div>
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/add" type="button" class="btn btn-primary align-self-center">+ADD</a> 
+  </div>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -10,17 +17,18 @@
     </tr>
   </thead>
   <tbody>
+    {{#each employees as |employee| }}
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>email@mdo.com</td>
-      <td>5555555555</td>
+      <th scope="row">{{employee.id}}</th>
+      <td>{{employee.first_name}}</td>
+      <td>{{employee.last_name}}</td>
+      <td>{{employee.email}}</td>
+      <td>{{employee.plan}}</td>
       <td>
-          <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i> View</a>
           <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i> Edit</a>
           <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
       </td>
     </tr>
+    {{/each}}
   </tbody>
 </table>

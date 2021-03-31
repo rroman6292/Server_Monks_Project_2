@@ -40,7 +40,7 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 
-
+//Update an existing employee
 router.put('/:id', withAuth, async (req, res) => {
   try {
     const employeeData = await User.update(

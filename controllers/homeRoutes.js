@@ -48,9 +48,13 @@ router.get('/profile', withAuth, async (req, res) => {
         {
           model: Roles,
           attributes: ['name'],
-          where: role_id = 3,
         },
       ],
+      where:  [
+        {
+          role_id:  3
+        }
+      ]
     });
 
     const employees = employeeData.map((employee) => employee.get({ plain: true }));

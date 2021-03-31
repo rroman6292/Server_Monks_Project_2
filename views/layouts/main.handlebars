@@ -23,13 +23,12 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>Employee Onboarding</h1>
       <nav class="blue-grey darken-3">
-        <a class="btn m-5" href="/">Homepage</a>
+        
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a class="btn m-5" href="/employee">Onboarding Plans</a>
+        <a class="btn m-5" href="/">Homepage</a>
+        <a class="btn m-5" href="/onboarding">Your Onboarding Documents</a>
         <button class=" btn no-button" id="logout">Logout</button>
-        {{else}}
-        <a class="btn m-5" href="/login">Login</a>
         {{/if}}
       </nav>
     </header>

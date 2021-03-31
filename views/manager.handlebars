@@ -1,11 +1,8 @@
 <div class="row">
-  <div class="col-6"><h1>Employees</h1></div>
-  <div class="col-6 d-flex justify-content-end">
-    <a href="/add" type="button" class="btn btn-primary align-self-center">+ADD</a> 
-  </div>
+  <div class="col-6"><h2>Employees</h2></div>
 </div>
 
-<table class="table">
+<table class="table delEmp">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -25,12 +22,16 @@
       <td>{{employee.email}}</td>
       <td>{{employee.plan}}</td>
       <td>
-          <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i> Edit</a>
-          <a href="#" type="button" class="btn btn-light btn-small"><i class="bi bi-person-x"></i> Delete</a>
+            <button class="btn btn-light btn-small" data-id="{{employee.id}}">EDIT</button>
+            <button class="btn btn-sm btn-danger delEmp" data-id="{{employee.id}}">DELETE</button>
       </td>
     </tr>
     {{/each}}
   </tbody>
 </table>
-<script src="../public/js/add.js"></script>
-<script src="../public/js/logout.js"></script>
+<div class="col-6 justify-content-end">
+  <a href="/add" type="button" class="btn btn-primary align-self-center">+ADD</a> 
+</div>
+<script src="./js/add.js"></script>
+<script src="./js/logout.js"></script>
+<script src="./js/delete.js"></script>

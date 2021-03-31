@@ -1,40 +1,31 @@
 const router = require('express').Router();
-const { User, Onboarding } = require('../../models');
+const { User } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
+//Get All Users
+router.get('/', async (req, res) => {
+  try {
+    const userData = await User.findAll(req.body);
 
-//View all staff - Admin Role
-router.get('/', async (req,res) => {
-    try{
-        const employeeData = await User.findAll({
-            include: [{model: User}],
-        });
-        res.status(200).json(employeeData);
-    } catch (err) {
-      res.status(400).json(err);
-    }
-  });
-
-
-//View all employees - Manager Role
-
-router.get('/employee', async (req,res) => {
-try{
-    const employeeData = await User.findAll({
-        where: {role_id: 3}
-
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
     });
-    res.status(200).json(employeeData);
-} catch (err) {
+  } catch (err) {
     res.status(400).json(err);
-}
+  }
 });
 
 
 //Create User
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -48,7 +39,7 @@ router.post('/', async (req, res) => {
 
 
 //Update existing employee by ID
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     User.update(req.body,   {
           where: {
             id: req.params.id,
@@ -65,19 +56,23 @@ router.put('/:id', (req, res) => {
 
 
 //Delete existing employee by ID
-router.delete('/:id', (req, res) => {
-    User.destroy(req.body,   {
-          where: {
-            id: req.params.id,
-          },
-        }
-      )
-        .then((updatedUser) =>  {
-          res.json(`The user with an id of ${req.params.id} has been deleted.`);
-      })
-      .catch((err) => {
-        res.json(err);
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+      const employeeData = await User.destroy({
+        where:  {
+          id: req.params.id,
+        },
       });
+
+      if (!employeeData) {
+        res.status(404).json({ message: 'No employees found with this id!' });
+        return;
+      }
+
+      res.status(200).json(employeeData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
   });
   
 

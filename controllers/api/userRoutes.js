@@ -30,29 +30,40 @@ router.post('/', withAuth, async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json(userData);
     });
+
+    res.status(200).json(userData);
+
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 
-//Update existing employee by ID
-router.put('/:id', withAuth, (req, res) => {
-    User.update(req.body,   {
-          where: {
-            id: req.params.id,
-          },
-        }
-      )
-        .then((updatedUser) =>  {
-          res.json(`The user with an id of ${req.params.id} has been updated.`);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
-  });
+//Update an existing employee
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const employeeData = await User.update(
+      {
+        ...req.body,
+      },
+      {
+        where:  {
+          id: req.params.id,
+        },
+      },
+    );
+
+    if (!employeeData) {
+      res.status(404).json({ message: 'No employees found with this id!' });
+      return;
+    }
+
+    res.status(200).json(employeeData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 //Delete existing employee by ID

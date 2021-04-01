@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col s3 m-5">
-    <div class="row"><h2>Add Or Edit An Employee</h2></div>
+  <div class="col s2 offset-s2 m-5">
+    <div class="row left-align"><h5>Add Or Edit An Employee</h5></div>
       <div class="row">
         <form>
-            <div class="row">
-              <label for="employee_id">Employee ID # (Required Only For Edit)</label>
-              <input list="employees" type="text" class="form-control" id="employee_id" name="employee_id">
+            <div class="row input-field">
+              <label for="employee_id">Employee ID # (Required For Edit Or Delete)</label>
+              <input list="employees" type="text" id="employee_id" name="employee_id">
               <datalist id="employees">
                 {{#each allStaff as |staff| }}
                   <option value="{{staff.id}}">{{staff.first_name}} {{staff.last_name}}</option>
@@ -13,48 +13,50 @@
               </datalist>
             </div>
 
-            <div class="row">
+            <div class="row input-field">
               <label for="role">Employee's Role</label>
-              <input list="roles" type="text" class="form-control" id="role" name="role">
+              <input list="roles" type="text" class="form-control" id="role_id" name="role_id">
               <datalist id="roles">
                 <option value="3">Employee</option>
               </datalist>
             </div>
 
-            <div class="row">
+            <div class="row input-field">
               <label for="first_name">First Name</label>
               <input type="text" class="form-control" id="first_name" name="first_name">
             </div>
 
-            <div class="row">
+            <div class="row input-field">
               <label for="last_name">Last Name</label>
               <input type="text" class="form-control" id="last_name" name="last_name">
             </div>
 
-            <div class="row">
+            <div class="row input-field">
               <label for="email">Email Address</label>
               <input type="text" class="form-control" id="email" name="email">
             </div>
 
-            <div class="row">
+            <div class="row input-field">
               <label for="password">Temporary Password (Required Only For Add)</label>
               <input type="password" class="form-control" id="password" name="password">
             </div>
 
             <div class="row">
-              <button class="btn btn-large blue valign-wrapper add">Add</button>
+              <button class="btn btn waves-effect waves-light valign-wrapper" id="add">Add</button>
 
-              <button class="btn btn-large yellow valign-wrapper update">Edit</button>
+              <button class="btn btn waves-effect waves-light valign-wrapper" id="update">Edit</button>
+
+              <button class="btn btn red waves-effect waves-light valign-wrapper" id="delete">Delete</button>
             </div>
 
         </form>
       </div>
   </div>
-  <div class="col s7 m-5">
-    <div class="row"><h2>Existing Employee List</h2></div>
+  <div class="col s6 offset-s1 m-5">
+    <div class="row left-align"><h5>Existing Staff List</h5></div>
       <div class="row">
         <div class="col">
-          <table class="table centered responsive-table striped">
+          <table class="table centered responsive-table striped teal">
             <thead>
               <tr>
                 <th scope="col">Employee ID #</th>
@@ -62,7 +64,6 @@
                 <th scope="col">Last Name</th>
                 <th scope="col">Email Address</th>
                 <th scope="col">Employee's Role</th>
-                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -72,10 +73,7 @@
                 <td>{{staff.first_name}}</td>
                 <td>{{staff.last_name}}</td>
                 <td>{{staff.email}}</td>
-                <td>{{staffrole.name}}</td>
-                <td>
-                  <button class="btn btn-sm btn-danger valign-wrapper delete" data-id="{{staff.id}}">DELETE</button>
-                </td>
+                <td>{{staff.role.name}}</td>
               </tr>
               {{/each}}
             </tbody>
@@ -84,5 +82,10 @@
       </div>
   </div>
 </div>
-
-<script src="./js/cud.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+</script>
+<script src="./js/cud.js" defer></script>

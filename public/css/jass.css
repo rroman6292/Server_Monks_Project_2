@@ -5,6 +5,11 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+.col {
+padding-left: 1050px;
+margin: 50px;
+}
+
  html {
     line-height: 1.15;
     /* 1 */
@@ -19,7 +24,7 @@
    */
   body {
     margin: 0;
-    background-color: teal;
+    /* background-color: #757575 ; */
   }
   
   /**
@@ -38,8 +43,11 @@
   h1 {
     font-size: 2em;
     margin: 0.67em 0;
+    text-align: center;
+    background-color: #ef5350;
+    color: #e0e0e0 ;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
   }
-  
   /* Grouping content
      ========================================================================== */
   /**
@@ -990,8 +998,8 @@
     border: 1px solid transparent;
     outline: none;
     color: #1a1a1a;
-    background-color: #aeaeae;
-    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    background-color: #aeaeae; */
+    /* transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
   
   .btn:hover {

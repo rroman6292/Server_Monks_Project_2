@@ -67,11 +67,12 @@ router.put('/:id', withAuth, async (req, res) => {
 
 
 //Delete existing employee by ID
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
       const employeeData = await User.destroy({
         where:  {
           id: req.params.id,
+          //user_id: req.session.user_id,
         },
       });
 

@@ -15,7 +15,7 @@
 
             <div class="row">
               <label for="role">Employee's Role</label>
-              <input list="roles" type="text" class="form-control" id="role" name="role">
+              <input list="roles" type="text" class="form-control" id="role_id" name="role_id">
               <datalist id="roles">
                 <option value="3">Employee</option>
               </datalist>
@@ -42,9 +42,11 @@
             </div>
 
             <div class="row">
-              <button class="btn btn-large blue valign-wrapper add">Add</button>
+              <button class="btn btn-large blue valign-wrapper" id="add">Add</button>
 
-              <button class="btn btn-large yellow valign-wrapper update">Edit</button>
+              <button class="btn btn-large yellow valign-wrapper" id="update">Edit</button>
+
+              <button class="btn btn-large yellow valign-wrapper" id="delete">Delete</button>
             </div>
 
         </form>
@@ -74,7 +76,7 @@
                 <td>{{employee.email}}</td>
                 <td>{{employee.role.name}}</td>
                 <td>
-                  <button class="btn btn-sm btn-danger valign-wrapper delete" data-id="{{employee.id}}">DELETE</button>
+                  <button class="btn btn-sm btn-danger valign-wrapper delete-list" data-id="{{employee.id}}">DELETE</button>
                 </td>
               </tr>
               {{/each}}
@@ -84,5 +86,4 @@
       </div>
   </div>
 </div>
-
-<script src="./js/cud.js"></script>
+<script src="./js/cud.js" defer></script>

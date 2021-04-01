@@ -22,19 +22,19 @@ margin: 50px;
   /**
    * Remove the margin in all browsers.
    */
-  body {
+  /* body {
     margin: 0;
-    /* background-color: #757575 ; */
-  }
+    background-color: #757575 ;
+  } */
   
   /**
    * Render the `main` element consistently in IE.
    */
-  main {
+  /* main {
     display: block;
     margin: 50px;
     background-color: teal;
-  }
+  } */
   
   /**
    * Correct the font size and margin on `h1` elements within `section` and
@@ -149,17 +149,13 @@ margin: 50px;
   /**
    * Remove the border on images inside links in IE 10.
    */
-  img {
+  /* img {
     border-style: none;
     width: 300px;
     height: 300px;
     margin-left: 500px;
-    
-   
-  
-
   }
-  
+   */
   /* Forms
      ========================================================================== */
   /**
@@ -987,6 +983,7 @@ margin: 50px;
     display: flex !important;
   }
   
+  /**
   .btn {
     text-align: center;
     display: inline-block;
@@ -998,7 +995,7 @@ margin: 50px;
     border: 1px solid transparent;
     outline: none;
     color: #1a1a1a;
-    background-color: #aeaeae; */
+    background-color: #aeaeae;
     /* transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
   

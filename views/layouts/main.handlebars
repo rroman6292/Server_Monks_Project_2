@@ -19,24 +19,31 @@
 
 <body>
   <div>
-    <header>
-      <h1>Employee Onboarding App</h1>
-       <div>
+    {{!-- <header> --}}
+      <h1 class = "z-depth-5">Employee Onboarding App</h1>
+      <div class = "row">
+       <div class = "col s4">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
+        <nav>
         <a class="btn m-5" href="/">Homepage</a>
         <a class="btn m-5" href="/onboarding">Your Onboarding Documents</a>
         <button id="logout">Logout</button>
+        </nav>
         {{/if}}
       </div>
-    </header>
-    <main>
+    
+    {{!-- </header> --}}
+    <main class = "z-depth-5">
             {{{ body }}}
     </main>
     <footer>
       
     </footer>
-  </div class = "container">
+  </div>
+  </div>
 </body>
 
 </html>
+
+    {{!-- <img src = "https://kissflow.com/wp-content/uploads/2018/04/850x450_Onboarding-01.png" alt = "Onboard"> --}}

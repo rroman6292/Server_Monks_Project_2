@@ -1,20 +1,48 @@
 const router = require('express').Router();
+const { response } = require('express');
 const { Roles, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+
+router.get('/', withAuth, async (req, res) => {
   try {
     // Pass serialized data and session flag into template
-    res.render('login', { 
-           logged_in: req.session.logged_in,
-           role: true
-    });
+    res.render('login');
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.render('/profile', {
+      logged_in: req.session.logged_in,
+    });
+    return;
+  }
+  res.render('login');
+});
+
+
+router.get('/onboarding', withAuth, async (req, res) => {
+  try{
+
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] }
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('onboarding',  {
+      ...user,
+      logged_in:  true
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 // Use withAuth middleware to prevent access to route
@@ -86,24 +114,7 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
-
-  res.render('login');
-});
 
 
-router.get('/add', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/add');
-    return;
-  }
-  res.render('login');
-});
 
 module.exports = router;

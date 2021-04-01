@@ -54,5 +54,47 @@
     "role_id":    3,
     "email": "susie@gmail.com",
     "password": "password12345"
+  },
+  {
+    "first_name": "Janey",
+    "last_name": "Test",
+    "role_id":    2,
+    "email": "janey@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "first_name": "James",
+    "last_name": "Test",
+    "role_id":    2,
+    "email": "james@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "first_name": "Lar",
+    "last_name": "Test",
+    "role_id":    3,
+    "email": "lar@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "first_name": "Allie",
+    "last_name": "Test",
+    "role_id":    3,
+    "email": "allie@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "first_name": "Timmy",
+    "last_name": "Test",
+    "role_id":    3,
+    "email": "timmy@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "first_name": "Susan",
+    "last_name": "Test",
+    "role_id":    3,
+    "email": "susan@gmail.com",
+    "password": "password12345"
   }
 ]

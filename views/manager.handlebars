@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col s2 offset-s2 m-5">
-    <div class="row left-align"><h5>Add Or Edit An Employee</h5></div>
+    {{!-- <div class="row left-align"><h5>Add Or Edit An Employee</h5></div> --}}
       <div class="row">
         <form>
             <div class="row input-field">
-              <label for="employee_id">Employee ID # (Required For Edit Or Delete)</label>
+              <label for="employee_id">Employee ID # (Required)</label>
               <input list="employees" type="text" id="employee_id" name="employee_id">
               <datalist id="employees">
                 {{#each employees as |employee| }}
@@ -37,26 +37,26 @@
             </div>
 
             <div class="row input-field">
-              <label for="password">Temporary Password (Required Only For Add)</label>
+              <label for="password">Temp Password (Required For Add)</label>
               <input type="password" class="form-control" id="password" name="password">
             </div>
 
             <div class="row">
-              <button class="btn btn waves-effect waves-light valign-wrapper" id="add">Add</button>
+              <button class="btn btn waves-effect waves-light valign-wrapper red darken-2 z-depth-5" id="add">Add</button>
 
-              <button class="btn btn waves-effect waves-light valign-wrapper" id="update">Edit</button>
+              <button class="btn btn waves-effect waves-light valign-wrapper red darken-2 z-depth-5" id="update">Edit</button>
 
-              <button class="btn btn red waves-effect waves-light valign-wrapper" id="delete">Delete</button>
+              <button class="btn btn red waves-effect waves-light valign-wrapper red darken-2 z-depth-5" id="delete">Delete</button>
             </div>
 
         </form>
       </div>
   </div>
   <div class="col s6 offset-s1 m-5">
-    <div class="row left-align"><h5>Existing Employee List</h5></div>
+    {{!-- <div class="row left-align"><h5>Existing Employee List</h5></div> --}}
       <div class="row">
         <div class="col">
-          <table class="table centered responsive-table striped teal">
+          <table class="table centered responsive-table striped white">
             <thead>
               <tr>
                 <th scope="col">Employee ID #</th>

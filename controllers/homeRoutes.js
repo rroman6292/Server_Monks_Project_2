@@ -103,7 +103,7 @@ router.get('/profile', withAuth, async (req, res) => {
             })
             break;
         case 3:
-            res.render('employee', {
+            res.render('onboarding', {
                 ...user,
                 logged_in: true
             })
